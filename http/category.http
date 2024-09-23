@@ -1,0 +1,13 @@
+### POST category
+POST http://localhost:3333/category HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGFsbGVzIiwiZW1haWwiOiJ0YWxsZXMxQGV4ZW1wbGUuY29tIiwiaWF0IjoxNzIxMDA5OTQ3LCJleHAiOjE3MjM2MDE5NDcsInN1YiI6IjRiOWI4MzFkLWQ1MTEtNGQwMC04NzFkLWRiMmU5ODA2MjJiNyJ9.Ht748kDfD0EdaxjFWIbIGsjVwxEXNc6iDtvBqpXuBAk
+
+{
+    "name": "Pizzas"
+}
+
+### GET categories
+GET http://localhost:3333/category HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGFsbGVzIiwiZW1haWwiOiJ0YWxsZXMxQGV4ZW1wbGUuY29tIiwiaWF0IjoxNzIxMDA5OTQ3LCJleHAiOjE3MjM2MDE5NDcsInN1YiI6IjRiOWI4MzFkLWQ1MTEtNGQwMC04NzFkLWRiMmU5ODA2MjJiNyJ9.Ht748kDfD0EdaxjFWIbIGsjVwxEXNc6iDtvBqpXuBAk

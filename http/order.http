@@ -1,0 +1,64 @@
+### POST order
+POST http://localhost:3333/order
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGFsbGVzIiwiZW1haWwiOiJ0YWxsZXMxQGV4ZW1wbGUuY29tIiwiaWF0IjoxNzIxMDA5OTQ3LCJleHAiOjE3MjM2MDE5NDcsInN1YiI6IjRiOWI4MzFkLWQ1MTEtNGQwMC04NzFkLWRiMmU5ODA2MjJiNyJ9.Ht748kDfD0EdaxjFWIbIGsjVwxEXNc6iDtvBqpXuBAk
+
+{
+    "name": "Mesa Talles",
+    "table": 2
+}
+
+
+### DELETE order
+DELETE http://localhost:3333/order?order_id=02cbbacc-dcc5-403b-8d4a-79f9f49db51b
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGFsbGVzIiwiZW1haWwiOiJ0YWxsZXMxQGV4ZW1wbGUuY29tIiwiaWF0IjoxNzIxMDA5OTQ3LCJleHAiOjE3MjM2MDE5NDcsInN1YiI6IjRiOWI4MzFkLWQ1MTEtNGQwMC04NzFkLWRiMmU5ODA2MjJiNyJ9.Ht748kDfD0EdaxjFWIbIGsjVwxEXNc6iDtvBqpXuBAk
+
+
+### POST order item
+POST http://localhost:3333/order/add
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGFsbGVzIiwiZW1haWwiOiJ0YWxsZXMxQGV4ZW1wbGUuY29tIiwiaWF0IjoxNzIxMDA5OTQ3LCJleHAiOjE3MjM2MDE5NDcsInN1YiI6IjRiOWI4MzFkLWQ1MTEtNGQwMC04NzFkLWRiMmU5ODA2MjJiNyJ9.Ht748kDfD0EdaxjFWIbIGsjVwxEXNc6iDtvBqpXuBAk
+
+{
+    "order_id": "e23884ec-3bb6-4a74-8bf5-b5cf40a91b1f",
+    "product_id": "0e557bcb-1156-4620-86b6-933429a49302",
+    "amount": 2
+}
+
+### DELETE order item
+DELETE  http://localhost:3333/order/remove?item_id=c083e8df-d3d6-42cb-9e33-73fb13d941fe
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGFsbGVzIiwiZW1haWwiOiJ0YWxsZXMxQGV4ZW1wbGUuY29tIiwiaWF0IjoxNzIxMDA5OTQ3LCJleHAiOjE3MjM2MDE5NDcsInN1YiI6IjRiOWI4MzFkLWQ1MTEtNGQwMC04NzFkLWRiMmU5ODA2MjJiNyJ9.Ht748kDfD0EdaxjFWIbIGsjVwxEXNc6iDtvBqpXuBAk
+
+
+### PUT order item
+PUT http://localhost:3333/order/send
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGFsbGVzIiwiZW1haWwiOiJ0YWxsZXMxQGV4ZW1wbGUuY29tIiwiaWF0IjoxNzIxMDA5OTQ3LCJleHAiOjE3MjM2MDE5NDcsInN1YiI6IjRiOWI4MzFkLWQ1MTEtNGQwMC04NzFkLWRiMmU5ODA2MjJiNyJ9.Ht748kDfD0EdaxjFWIbIGsjVwxEXNc6iDtvBqpXuBAk
+
+{
+    "order_id": "3a13c2f3-6621-4da4-9434-27d605ab2a07"
+}
+
+
+### GET orders
+GET http://localhost:3333/orders
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGFsbGVzIiwiZW1haWwiOiJ0YWxsZXMxQGV4ZW1wbGUuY29tIiwiaWF0IjoxNzIxMDA5OTQ3LCJleHAiOjE3MjM2MDE5NDcsInN1YiI6IjRiOWI4MzFkLWQ1MTEtNGQwMC04NzFkLWRiMmU5ODA2MjJiNyJ9.Ht748kDfD0EdaxjFWIbIGsjVwxEXNc6iDtvBqpXuBAk
+
+
+### GET details
+GET http://localhost:3333/order/detail?order_id=e23884ec-3bb6-4a74-8bf5-b5cf40a91b1f
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGFsbGVzIiwiZW1haWwiOiJ0YWxsZXMxQGV4ZW1wbGUuY29tIiwiaWF0IjoxNzIxMDA5OTQ3LCJleHAiOjE3MjM2MDE5NDcsInN1YiI6IjRiOWI4MzFkLWQ1MTEtNGQwMC04NzFkLWRiMmU5ODA2MjJiNyJ9.Ht748kDfD0EdaxjFWIbIGsjVwxEXNc6iDtvBqpXuBAk
+
+
+### PUT finish
+PUT http://localhost:3333/order/finish
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGFsbGVzIiwiZW1haWwiOiJ0YWxsZXMxQGV4ZW1wbGUuY29tIiwiaWF0IjoxNzIxMDA5OTQ3LCJleHAiOjE3MjM2MDE5NDcsInN1YiI6IjRiOWI4MzFkLWQ1MTEtNGQwMC04NzFkLWRiMmU5ODA2MjJiNyJ9.Ht748kDfD0EdaxjFWIbIGsjVwxEXNc6iDtvBqpXuBAk
+
+{
+    "order_id": "e23884ec-3bb6-4a74-8bf5-b5cf40a91b1f"
+}
