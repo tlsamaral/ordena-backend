@@ -1,14 +1,14 @@
-import { Request, Response } from "express";
-import { AuthUserService } from "../../services/user/AuthUserService";
+import type { Request, Response } from 'express'
+import { AuthUserService } from '../../services/user/AuthUserService'
 
 class AuthUserController {
-    async handle(request: Request, response: Response) {
-        const { email, password } = request.body;
-        const authUserService = new AuthUserService();
+  async handle(request: Request, response: Response) {
+    const { email, password } = request.body
+    const authUserService = new AuthUserService()
 
-        const auth = await authUserService.execute({ email, password });
-        return response.json(auth);
-    }
+    const auth = await authUserService.execute({ email, password })
+    return response.json(auth)
+  }
 }
 
-export default new AuthUserController();
+export default new AuthUserController()
