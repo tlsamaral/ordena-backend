@@ -1,6 +1,6 @@
 import type { Request, Response } from 'express'
-import { SendOrderService } from '../../services/order/SendOrderService'
 import { SendOrderFullService } from '../../services/order/SendOrderFullService'
+import { SendOrderService } from '../../services/order/SendOrderService'
 
 interface ProductInOrder {
   id: string
@@ -14,7 +14,8 @@ export interface OrderFullRequest {
 class SendOrderController {
   async handle(req: Request, res: Response) {
     const { order_id, products } = req.body as OrderFullRequest
-    const sendOrder = new SendOrderFullService()
+    const socketio = req.app.get('socketio')
+    const sendOrder = new SendOrderFullService(socketio)
     const order = await sendOrder.execute({ order_id, products })
 
     return res.json(order)

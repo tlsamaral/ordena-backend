@@ -18,6 +18,7 @@ import ListOrdersController from './controllers/order/ListOrdersController'
 import RemoveItemController from './controllers/order/RemoveItemController'
 import RemoveOrderController from './controllers/order/RemoveOrderController'
 import SendOrderController from './controllers/order/SendOrderController'
+import SendOrderFullController from './controllers/order/SendOrderFullController'
 import DeleteProductController from './controllers/product/DeleteProductController'
 import GetAllProductsController from './controllers/product/GetAllProductsController'
 import CreateTableController from './controllers/table/CreateTableController'
@@ -57,6 +58,7 @@ router.post('/order/add', isAuthenticated, AddItemController.handle)
 router.delete('/order/remove', isAuthenticated, RemoveItemController.handle)
 
 router.put('/order/send', isAuthenticated, SendOrderController.handle)
+router.put('/order/send-full', isAuthenticated, SendOrderFullController.handle)
 router.get('/orders', isAuthenticated, ListOrdersController.handle)
 router.get('/order/detail', isAuthenticated, DetailOrderController.handle)
 router.put('/order/finish', isAuthenticated, FinishOrderController.handle)
