@@ -4,7 +4,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGFsbGVzIiwiZW1haWwiOiJ0YWxsZXNAZXhlbXBsZS5jb20iLCJpYXQiOjE3MzExMTM4OTAsImV4cCI6MTczMzcwNTg5MCwic3ViIjoiNTFkM2U2NTItYWZlMy00ZGIxLWIwM2MtYzk1Mzg2NmExOGY2In0.a-FaUSgIgZwMahT6fRKh7J_Wkwjnx-zGPuZ3-xfthZY
 
 {
-    "name": "Mesa Talles",
+    "name": "Nicolas",
     "table_id": "c950e23d-aec7-4340-892c-41d8110949e7"
 }
 
@@ -41,17 +41,21 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGFsbGVzI
     "order_id": "3a13c2f3-6621-4da4-9434-27d605ab2a07"
 }
 
+### GET order by id
+GET http://localhost:3333/order/f261d130-d328-402f-b26c-516b22c7b79e
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGFsbGVzIiwiZW1haWwiOiJ0YWxsZXNAZXhlbXBsZS5jb20iLCJpYXQiOjE3MzExMTM4OTAsImV4cCI6MTczMzcwNTg5MCwic3ViIjoiNTFkM2U2NTItYWZlMy00ZGIxLWIwM2MtYzk1Mzg2NmExOGY2In0.a-FaUSgIgZwMahT6fRKh7J_Wkwjnx-zGPuZ3-xfthZY
 
 ### GET orders
 GET http://localhost:3333/orders
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGFsbGVzIiwiZW1haWwiOiJ0YWxsZXMxQGV4ZW1wbGUuY29tIiwiaWF0IjoxNzIxMDA5OTQ3LCJleHAiOjE3MjM2MDE5NDcsInN1YiI6IjRiOWI4MzFkLWQ1MTEtNGQwMC04NzFkLWRiMmU5ODA2MjJiNyJ9.Ht748kDfD0EdaxjFWIbIGsjVwxEXNc6iDtvBqpXuBAk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGFsbGVzIiwiZW1haWwiOiJ0YWxsZXNAZXhlbXBsZS5jb20iLCJpYXQiOjE3MzExMTM4OTAsImV4cCI6MTczMzcwNTg5MCwic3ViIjoiNTFkM2U2NTItYWZlMy00ZGIxLWIwM2MtYzk1Mzg2NmExOGY2In0.a-FaUSgIgZwMahT6fRKh7J_Wkwjnx-zGPuZ3-xfthZY
 
 
 ### GET details
 GET http://localhost:3333/order/detail?order_id=e23884ec-3bb6-4a74-8bf5-b5cf40a91b1f
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGFsbGVzIiwiZW1haWwiOiJ0YWxsZXMxQGV4ZW1wbGUuY29tIiwiaWF0IjoxNzIxMDA5OTQ3LCJleHAiOjE3MjM2MDE5NDcsInN1YiI6IjRiOWI4MzFkLWQ1MTEtNGQwMC04NzFkLWRiMmU5ODA2MjJiNyJ9.Ht748kDfD0EdaxjFWIbIGsjVwxEXNc6iDtvBqpXuBAk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGFsbGVzIiwiZW1haWwiOiJ0YWxsZXNAZXhlbXBsZS5jb20iLCJpYXQiOjE3MzExMTM4OTAsImV4cCI6MTczMzcwNTg5MCwic3ViIjoiNTFkM2U2NTItYWZlMy00ZGIxLWIwM2MtYzk1Mzg2NmExOGY2In0.a-FaUSgIgZwMahT6fRKh7J_Wkwjnx-zGPuZ3-xfthZY
 
 
 ### PUT finish

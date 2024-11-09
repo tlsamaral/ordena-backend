@@ -13,6 +13,7 @@ import AddItemController from './controllers/order/AddItemController'
 import CreateOrderController from './controllers/order/CreateOrderController'
 import DetailOrderController from './controllers/order/DetailOrderController'
 import FinishOrderController from './controllers/order/FinishOrderController'
+import GetOrderByIdController from './controllers/order/GetOrderByIdController'
 import ListOrdersController from './controllers/order/ListOrdersController'
 import RemoveItemController from './controllers/order/RemoveItemController'
 import RemoveOrderController from './controllers/order/RemoveOrderController'
@@ -50,6 +51,7 @@ router.get('/category/product', isAuthenticated, ListCategoryController.handle)
 // ROTAS ORDER
 router.post('/order', isAuthenticated, CreateOrderController.handle)
 router.delete('/order', isAuthenticated, RemoveOrderController.handle)
+router.get('/order/:id', isAuthenticated, GetOrderByIdController.handle)
 
 router.post('/order/add', isAuthenticated, AddItemController.handle)
 router.delete('/order/remove', isAuthenticated, RemoveItemController.handle)
