@@ -4,6 +4,6 @@ Content-Type: application/json
 Authorization: Bearer ACCESS-TOKEN
 
 {
-   "email":"talles1@exemple.com",
+   "email":"talles@exemple.com",
    "password":"123456"
 }
