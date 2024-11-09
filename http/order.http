@@ -1,11 +1,11 @@
 ### POST order
 POST http://localhost:3333/order
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGFsbGVzIiwiZW1haWwiOiJ0YWxsZXMxQGV4ZW1wbGUuY29tIiwiaWF0IjoxNzIxMDA5OTQ3LCJleHAiOjE3MjM2MDE5NDcsInN1YiI6IjRiOWI4MzFkLWQ1MTEtNGQwMC04NzFkLWRiMmU5ODA2MjJiNyJ9.Ht748kDfD0EdaxjFWIbIGsjVwxEXNc6iDtvBqpXuBAk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGFsbGVzIiwiZW1haWwiOiJ0YWxsZXNAZXhlbXBsZS5jb20iLCJpYXQiOjE3MzExMTM4OTAsImV4cCI6MTczMzcwNTg5MCwic3ViIjoiNTFkM2U2NTItYWZlMy00ZGIxLWIwM2MtYzk1Mzg2NmExOGY2In0.a-FaUSgIgZwMahT6fRKh7J_Wkwjnx-zGPuZ3-xfthZY
 
 {
     "name": "Mesa Talles",
-    "table": 2
+    "table_id": "c950e23d-aec7-4340-892c-41d8110949e7"
 }
 
 
