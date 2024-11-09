@@ -51,9 +51,19 @@ model Product {
   @@map("products")
 }
 
+model Table {
+  id         String    @id @default(uuid())
+  name       String 
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+  orders     Order[]
+  @@map("tables")
+}
+
 model Order {
   id         String    @id @default(uuid())
-  table      Int
+  table      Table     @relation(fields: [table_id], references: [id])
+  table_id   String
   status     Boolean   @default(false)
   draft      Boolean   @default(true)
   name       String?
