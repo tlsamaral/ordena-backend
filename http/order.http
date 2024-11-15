@@ -61,8 +61,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGFsbGVzI
 ### PUT finish
 PUT http://localhost:3333/order/finish
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGFsbGVzIiwiZW1haWwiOiJ0YWxsZXMxQGV4ZW1wbGUuY29tIiwiaWF0IjoxNzIxMDA5OTQ3LCJleHAiOjE3MjM2MDE5NDcsInN1YiI6IjRiOWI4MzFkLWQ1MTEtNGQwMC04NzFkLWRiMmU5ODA2MjJiNyJ9.Ht748kDfD0EdaxjFWIbIGsjVwxEXNc6iDtvBqpXuBAk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGFsbGVzIiwiZW1haWwiOiJ0YWxsZXNAZXhlbXBsZS5jb20iLCJpYXQiOjE3MzEzNzA4NjMsImV4cCI6MTczMzk2Mjg2Mywic3ViIjoiNTFkM2U2NTItYWZlMy00ZGIxLWIwM2MtYzk1Mzg2NmExOGY2In0.XwWjZHoivxb3D9bsm0kk4c0xxnrHE-1euSd4SnVk-OA
 
 {
-    "order_id": "e23884ec-3bb6-4a74-8bf5-b5cf40a91b1f"
+    "order_id": "4635172d-1c51-4d23-af18-eb36c4be7f32"
 }
