@@ -12,6 +12,7 @@ import cors from 'cors'
 import { Server } from 'socket.io'
 
 import { router } from './routes'
+import type { CustomSocketServer } from './services/types/socket'
 
 const app = express()
 const server = http.createServer(app)
@@ -19,6 +20,20 @@ const io = new Server(server, {
   cors: {
     origin: '*', // Ajuste conforme necessário
   },
+}) as CustomSocketServer
+io.userSockets = new Map<string, string>()
+
+io.on('connection', (socket) => {
+  const userId = socket.handshake.auth.userId as string
+  if (userId) {
+    console.log(`Conectado: userId ${userId} com socketId ${socket.id}`)
+    io.userSockets.set(userId, socket.id)
+  }
+
+  socket.on('disconnect', () => {
+    console.log(`Desconectado: userId ${userId}`)
+    io.userSockets.delete(userId)
+  })
 })
 
 app.set('socketio', io)

@@ -24,6 +24,7 @@ import GetAllProductsController from './controllers/product/GetAllProductsContro
 import CreateTableController from './controllers/table/CreateTableController'
 import GetTableController from './controllers/table/GetTableController'
 import GetUsersController from './controllers/user/GetUsersController'
+import { getUserIdFromToken } from './middlewares/getUserFromToken'
 import { isAuthenticated } from './middlewares/isAuthenticated'
 
 const router = Router()
@@ -50,7 +51,12 @@ router.delete('/product/:id', isAuthenticated, DeleteProductController.handle)
 router.get('/category/product', isAuthenticated, ListCategoryController.handle)
 
 // ROTAS ORDER
-router.post('/order', isAuthenticated, CreateOrderController.handle)
+router.post(
+  '/order',
+  isAuthenticated,
+  getUserIdFromToken,
+  CreateOrderController.handle,
+)
 router.delete('/order', isAuthenticated, RemoveOrderController.handle)
 router.get('/order/:id', isAuthenticated, GetOrderByIdController.handle)
 
