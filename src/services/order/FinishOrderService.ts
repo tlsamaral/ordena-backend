@@ -57,6 +57,7 @@ class FinishOrderService {
       console.log(`Usuário ${order.user_id} não está conectado no momento.`)
     }
 
+    this.io.emit('order:end', order)
     if (order.phone) {
       try {
         const smsResponse = await this.sendSmsWithTwilio.execute(
