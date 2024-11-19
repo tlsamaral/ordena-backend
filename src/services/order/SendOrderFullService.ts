@@ -1,12 +1,15 @@
 import type { Server } from 'socket.io'
 import type { OrderFullRequest } from '../../controllers/order/SendOrderFullController'
 import prismaClient from '../../prisma'
+import { SendSms } from '../../utils/sendSms'
 
 class SendOrderFullService {
   private io: Server
+  private sendSmsWithTwilio = new SendSms()
 
   constructor(io: Server) {
     this.io = io
+    this.sendSmsWithTwilio = new SendSms()
   }
 
   async execute({ order_id, products }: OrderFullRequest) {
@@ -45,6 +48,25 @@ class SendOrderFullService {
     })
 
     this.io.emit('orderCompleted', order)
+
+    if (order.phone) {
+      try {
+        const smsResponse = await this.sendSmsWithTwilio.execute(
+          order.phone,
+          `
+          Olá ${order.name}, seu pedido foi para a cozinha, por favor aguarde!
+
+          Resumo do pedido:
+          ${order.items.map((item) => `${item.product.name} x ${item.amount}`)}
+
+          ${order.table.name} 
+          Obrigado pela preferência
+        `,
+        )
+      } catch (error) {
+        console.log(error)
+      }
+    }
 
     return order
   }
