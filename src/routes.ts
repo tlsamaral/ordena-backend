@@ -15,6 +15,7 @@ import DetailOrderController from './controllers/order/DetailOrderController'
 import FinishOrderController from './controllers/order/FinishOrderController'
 import GetOrderByIdController from './controllers/order/GetOrderByIdController'
 import ListOrdersController from './controllers/order/ListOrdersController'
+import ProcessOrderController from './controllers/order/ProcessOrderController'
 import RemoveItemController from './controllers/order/RemoveItemController'
 import RemoveOrderController from './controllers/order/RemoveOrderController'
 import SendOrderController from './controllers/order/SendOrderController'
@@ -68,6 +69,7 @@ router.put('/order/send-full', isAuthenticated, SendOrderFullController.handle)
 router.get('/orders', isAuthenticated, ListOrdersController.handle)
 router.get('/order/detail', isAuthenticated, DetailOrderController.handle)
 router.put('/order/finish', isAuthenticated, FinishOrderController.handle)
+router.put('/order/process', isAuthenticated, ProcessOrderController.handle)
 
 // TABLES
 router.get('/tables', isAuthenticated, GetTableController.handle)

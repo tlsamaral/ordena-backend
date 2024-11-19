@@ -65,7 +65,9 @@ model Order {
   id         String    @id @default(uuid())
   table      Table     @relation(fields: [table_id], references: [id])
   table_id   String
-  status     Boolean   @default(false)
+  // status     Boolean   @default(false)
+  status     Status    @default(A)
+  phone      String? 
   draft      Boolean   @default(true)
   name       String?
   created_at DateTime? @default(now())
@@ -75,6 +77,13 @@ model Order {
   items      Item[]
 
   @@map("orders")
+}
+
+enum Status {
+  A
+  P
+  C
+  F
 }
 
 model Item {

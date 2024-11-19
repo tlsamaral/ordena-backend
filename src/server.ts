@@ -29,6 +29,7 @@ io.on('connection', (socket) => {
     console.log(`Conectado: userId ${userId} com socketId ${socket.id}`)
     io.userSockets.set(userId, socket.id)
   }
+  console.log(io.userSockets)
 
   socket.on('disconnect', () => {
     console.log(`Desconectado: userId ${userId}`)
