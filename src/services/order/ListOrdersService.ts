@@ -19,6 +19,7 @@ class ListOrderService {
               select: {
                 name: true,
                 banner: true,
+                price: true,
               },
             },
           },
