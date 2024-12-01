@@ -8,31 +8,30 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SendSms = void 0;
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
-const phoneNumber = process.env.TWILIO_PHONE_NUMBER;
-const twilio_1 = require("twilio");
-const client = new twilio_1.Twilio(accountSid, authToken);
-class SendSms {
-    constructor() {
-        this.client = client;
-    }
-    execute(phone, message) {
+exports.AlterRoleUserService = void 0;
+const prisma_1 = __importDefault(require("../../prisma"));
+class AlterRoleUserService {
+    execute(user_id) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                yield client.messages.create({
-                    body: message,
-                    from: phoneNumber,
-                    to: `+55${phone}`,
-                });
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error(error.message);
-            }
+            const userFind = yield prisma_1.default.user.findUnique({
+                where: {
+                    id: user_id,
+                },
+            });
+            const user = yield prisma_1.default.user.update({
+                where: {
+                    id: user_id,
+                },
+                data: {
+                    permission: !userFind.permission,
+                },
+            });
+            return user;
         });
     }
 }
-exports.SendSms = SendSms;
+exports.AlterRoleUserService = AlterRoleUserService;

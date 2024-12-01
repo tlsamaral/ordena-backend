@@ -12,31 +12,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DetailUserService = void 0;
+exports.UpdateUserPasswordService = void 0;
+const bcryptjs_1 = require("bcryptjs");
 const prisma_1 = __importDefault(require("../../prisma"));
-class DetailUserService {
-    execute(user_id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const user = yield prisma_1.default.user.findFirst({
+class UpdateUserPasswordService {
+    execute(_a) {
+        return __awaiter(this, arguments, void 0, function* ({ user_id, password }) {
+            const passwordHash = yield (0, bcryptjs_1.hash)(password, 8);
+            const user = yield prisma_1.default.user.update({
                 where: {
                     id: user_id,
                 },
-                select: {
-                    id: true,
-                    name: true,
-                    email: true,
-                    alter_password: true,
-                    admin: true,
+                data: {
+                    password: passwordHash,
+                    alter_password: false,
                 },
             });
-            return {
-                id: user.id,
-                name: user.name,
-                email: user.email,
-                alter_password: user.alter_password,
-                admin: user.admin,
-            };
+            return user;
         });
     }
 }
-exports.DetailUserService = DetailUserService;
+exports.UpdateUserPasswordService = UpdateUserPasswordService;

@@ -9,30 +9,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SendSms = void 0;
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
-const phoneNumber = process.env.TWILIO_PHONE_NUMBER;
-const twilio_1 = require("twilio");
-const client = new twilio_1.Twilio(accountSid, authToken);
-class SendSms {
-    constructor() {
-        this.client = client;
-    }
-    execute(phone, message) {
+const DeleteCategoryService_1 = require("../../services/category/DeleteCategoryService");
+class DeleteCategoryController {
+    handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                yield client.messages.create({
-                    body: message,
-                    from: phoneNumber,
-                    to: `+55${phone}`,
-                });
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error(error.message);
-            }
+            const { id } = req.params;
+            const deleteCategoryService = new DeleteCategoryService_1.DeleteCategoryService();
+            const category = yield deleteCategoryService.execute({ category_id: id });
+            return res.json(category);
         });
     }
 }
-exports.SendSms = SendSms;
+exports.default = new DeleteCategoryController();

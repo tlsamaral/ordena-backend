@@ -24,7 +24,6 @@ class AuthUserService {
                     email,
                 },
             });
-            console.log(user);
             if (!user) {
                 throw new Error('Usuário não encontrado');
             }
@@ -46,7 +45,9 @@ class AuthUserService {
                 id: user.id,
                 name: user.name,
                 email: user.email,
+                alter_password: user.alter_password,
                 token,
+                admin: user.admin,
             };
         });
     }

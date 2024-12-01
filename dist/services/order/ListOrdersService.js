@@ -46,6 +46,11 @@ class ListOrderService {
                     },
                 },
             });
+            // Verifica se não há ordens
+            if (!orders || orders.length === 0) {
+                return []; // Retorna um array vazio ou uma mensagem, dependendo do que você espera
+            }
+            // Processa as ordens caso existam
             const productsWithBannerUrl = orders.map((order) => {
                 return Object.assign(Object.assign({}, order), { items: order.items.map((item) => {
                         return Object.assign(Object.assign({}, item), { product: Object.assign(Object.assign({}, item.product), { banner: `${process.env.BASE_URL}/files/${item.product.banner}` }) });

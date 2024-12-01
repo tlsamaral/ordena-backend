@@ -9,30 +9,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SendSms = void 0;
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
-const phoneNumber = process.env.TWILIO_PHONE_NUMBER;
-const twilio_1 = require("twilio");
-const client = new twilio_1.Twilio(accountSid, authToken);
-class SendSms {
-    constructor() {
-        this.client = client;
-    }
-    execute(phone, message) {
+const CancelOrderService_1 = require("../../services/order/CancelOrderService");
+class CancelOrderController {
+    handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                yield client.messages.create({
-                    body: message,
-                    from: phoneNumber,
-                    to: `+55${phone}`,
-                });
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error(error.message);
-            }
+            const { order_id } = req.body;
+            const finishOrderService = new CancelOrderService_1.CancelOrderService();
+            const order = yield finishOrderService.execute({ order_id });
+            return res.json(order);
         });
     }
 }
-exports.SendSms = SendSms;
+exports.default = new CancelOrderController();

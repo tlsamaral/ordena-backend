@@ -13,7 +13,9 @@ const AuthUserController_1 = __importDefault(require("./controllers/user/AuthUse
 const CreateUserController_1 = __importDefault(require("./controllers/user/CreateUserController"));
 const DetailUserController_1 = __importDefault(require("./controllers/user/DetailUserController"));
 const multer_2 = __importDefault(require("./config/multer"));
+const DeleteCategoryController_1 = __importDefault(require("./controllers/category/DeleteCategoryController"));
 const AddItemController_1 = __importDefault(require("./controllers/order/AddItemController"));
+const CancelOrderController_1 = __importDefault(require("./controllers/order/CancelOrderController"));
 const CreateOrderController_1 = __importDefault(require("./controllers/order/CreateOrderController"));
 const DetailOrderController_1 = __importDefault(require("./controllers/order/DetailOrderController"));
 const FinishOrderController_1 = __importDefault(require("./controllers/order/FinishOrderController"));
@@ -29,25 +31,30 @@ const GetAllProductsController_1 = __importDefault(require("./controllers/produc
 const CreateTableController_1 = __importDefault(require("./controllers/table/CreateTableController"));
 const GetTableController_1 = __importDefault(require("./controllers/table/GetTableController"));
 const AcceptUserController_1 = __importDefault(require("./controllers/user/AcceptUserController"));
+const AlterRoleUserController_1 = __importDefault(require("./controllers/user/AlterRoleUserController"));
+const DeleteUserController_1 = __importDefault(require("./controllers/user/DeleteUserController"));
 const GetUsersController_1 = __importDefault(require("./controllers/user/GetUsersController"));
 const RejectUserController_1 = __importDefault(require("./controllers/user/RejectUserController"));
+const UpdateUserPasswordConroller_1 = __importDefault(require("./controllers/user/UpdateUserPasswordConroller"));
 const getUserFromToken_1 = require("./middlewares/getUserFromToken");
 const isAuthenticated_1 = require("./middlewares/isAuthenticated");
-const DeleteUserController_1 = __importDefault(require("./controllers/user/DeleteUserController"));
 const router = (0, express_1.Router)();
 exports.router = router;
 const upload = (0, multer_1.default)(multer_2.default.upload('./tmp'));
 // ROTAS USER
 router.post('/users', CreateUserController_1.default.handle);
-router.get('/users/all', GetUsersController_1.default.handle);
+router.get('/users/all', isAuthenticated_1.isAuthenticated, GetUsersController_1.default.handle);
 router.post('/session', AuthUserController_1.default.handle);
-router.put('/users/accept', AcceptUserController_1.default.handle);
-router.put('/users/reject', RejectUserController_1.default.handle);
-router.delete('/users/:id', DeleteUserController_1.default.handle);
+router.put('/users/accept', isAuthenticated_1.isAuthenticated, AcceptUserController_1.default.handle);
+router.put('/users/reject', isAuthenticated_1.isAuthenticated, RejectUserController_1.default.handle);
+router.delete('/users/:id', isAuthenticated_1.isAuthenticated, DeleteUserController_1.default.handle);
 router.get('/me', isAuthenticated_1.isAuthenticated, DetailUserController_1.default.handle);
+router.put('/user/alter/role', isAuthenticated_1.isAuthenticated, AlterRoleUserController_1.default.handle);
+router.put('/users/change-password', isAuthenticated_1.isAuthenticated, UpdateUserPasswordConroller_1.default.handle);
 // ROTAS CATEGORIAS
 router.post('/category', isAuthenticated_1.isAuthenticated, CreateCategoryController_1.default.handle);
 router.get('/category', isAuthenticated_1.isAuthenticated, ListCategoryController_1.default.handle);
+router.delete('/category/:id', isAuthenticated_1.isAuthenticated, DeleteCategoryController_1.default.handle);
 // ROTAS PRODUCT
 router.post('/product', isAuthenticated_1.isAuthenticated, upload.single('file'), CreateProductController_1.default.handle);
 router.get('/product/all', isAuthenticated_1.isAuthenticated, GetAllProductsController_1.default.handle);
@@ -65,6 +72,7 @@ router.get('/orders', isAuthenticated_1.isAuthenticated, ListOrdersController_1.
 router.get('/order/detail', isAuthenticated_1.isAuthenticated, DetailOrderController_1.default.handle);
 router.put('/order/finish', isAuthenticated_1.isAuthenticated, FinishOrderController_1.default.handle);
 router.put('/order/process', isAuthenticated_1.isAuthenticated, ProcessOrderController_1.default.handle);
+router.put('/order/cancel', isAuthenticated_1.isAuthenticated, CancelOrderController_1.default.handle);
 // TABLES
 router.get('/tables', isAuthenticated_1.isAuthenticated, GetTableController_1.default.handle);
 router.post('/tables', isAuthenticated_1.isAuthenticated, CreateTableController_1.default.handle);

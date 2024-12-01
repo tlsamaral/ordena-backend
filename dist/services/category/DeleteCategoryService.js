@@ -8,17 +8,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const AuthUserService_1 = require("../../services/user/AuthUserService");
-class AuthUserController {
-    handle(request, response) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { email, password } = request.body;
-            const authUserService = new AuthUserService_1.AuthUserService();
-            const auth = yield authUserService.execute({ email, password });
-            console.log(auth);
-            return response.json(auth);
+exports.DeleteCategoryService = void 0;
+const prisma_1 = __importDefault(require("../../prisma"));
+class DeleteCategoryService {
+    execute(_a) {
+        return __awaiter(this, arguments, void 0, function* ({ category_id }) {
+            const category = prisma_1.default.category.delete({
+                where: {
+                    id: category_id,
+                },
+            });
+            return category;
         });
     }
 }
-exports.default = new AuthUserController();
+exports.DeleteCategoryService = DeleteCategoryService;
