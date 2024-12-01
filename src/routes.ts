@@ -24,9 +24,12 @@ import DeleteProductController from './controllers/product/DeleteProductControll
 import GetAllProductsController from './controllers/product/GetAllProductsController'
 import CreateTableController from './controllers/table/CreateTableController'
 import GetTableController from './controllers/table/GetTableController'
+import AcceptUserController from './controllers/user/AcceptUserController'
 import GetUsersController from './controllers/user/GetUsersController'
+import RejectUserController from './controllers/user/RejectUserController'
 import { getUserIdFromToken } from './middlewares/getUserFromToken'
 import { isAuthenticated } from './middlewares/isAuthenticated'
+import DeleteUserController from './controllers/user/DeleteUserController'
 
 const router = Router()
 const upload = multer(uploadConfig.upload('./tmp'))
@@ -34,6 +37,9 @@ const upload = multer(uploadConfig.upload('./tmp'))
 router.post('/users', CreateUserController.handle)
 router.get('/users/all', GetUsersController.handle)
 router.post('/session', AuthUserCnotroller.handle)
+router.put('/users/accept', AcceptUserController.handle)
+router.put('/users/reject', RejectUserController.handle)
+router.delete('/users/:id', DeleteUserController.handle)
 router.get('/me', isAuthenticated, DetailUserController.handle)
 
 // ROTAS CATEGORIAS

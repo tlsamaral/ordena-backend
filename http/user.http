@@ -1,11 +1,11 @@
 ### POST users
 POST http://localhost:3333/users HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer ACCESS-TOKEN
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGFsbGVzIiwiZW1haWwiOiJ0YWxsZXNAZXhlbXBsZS5jb20iLCJpYXQiOjE3MzE5NzA2NTQsImV4cCI6MTczNDU2MjY1NCwic3ViIjoiNTFkM2U2NTItYWZlMy00ZGIxLWIwM2MtYzk1Mzg2NmExOGY2In0.HYeJsmDcndeQDggK0CHZjemda1ab_9IrCIUbg4ZWNXQ
 
 {
    "name":"Talles",
-   "email":"rafael@exemple.com",
+   "email":"teste5@exemple.com",
    "password":"123456"
 }
 

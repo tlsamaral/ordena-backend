@@ -13,15 +13,20 @@ class AuthUserService {
         email,
       },
     })
+    console.log(user)
 
     if (!user) {
-      throw new Error('User/password incorrect')
+      throw new Error('Usuário não encontrado')
     }
 
     const passwordMatch = await compare(password, user.password)
 
+    if (!user.permission) {
+      throw new Error('Este usuário não tem permissão para acessar o sistema')
+    }
+
     if (!passwordMatch) {
-      throw new Error('User/password incorrect')
+      throw new Error('Senha inválida')
     }
 
     const token = sign(
