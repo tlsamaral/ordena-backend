@@ -11,6 +11,7 @@ import DetailUserController from './controllers/user/DetailUserController'
 import uploadConfig from './config/multer'
 import DeleteCategoryController from './controllers/category/DeleteCategoryController'
 import AddItemController from './controllers/order/AddItemController'
+import CancelOrderController from './controllers/order/CancelOrderController'
 import CreateOrderController from './controllers/order/CreateOrderController'
 import DetailOrderController from './controllers/order/DetailOrderController'
 import FinishOrderController from './controllers/order/FinishOrderController'
@@ -26,9 +27,11 @@ import GetAllProductsController from './controllers/product/GetAllProductsContro
 import CreateTableController from './controllers/table/CreateTableController'
 import GetTableController from './controllers/table/GetTableController'
 import AcceptUserController from './controllers/user/AcceptUserController'
+import AlterRoleUserController from './controllers/user/AlterRoleUserController'
 import DeleteUserController from './controllers/user/DeleteUserController'
 import GetUsersController from './controllers/user/GetUsersController'
 import RejectUserController from './controllers/user/RejectUserController'
+import UpdateUserPasswordConroller from './controllers/user/UpdateUserPasswordConroller'
 import { getUserIdFromToken } from './middlewares/getUserFromToken'
 import { isAuthenticated } from './middlewares/isAuthenticated'
 
@@ -42,6 +45,12 @@ router.put('/users/accept', isAuthenticated, AcceptUserController.handle)
 router.put('/users/reject', isAuthenticated, RejectUserController.handle)
 router.delete('/users/:id', isAuthenticated, DeleteUserController.handle)
 router.get('/me', isAuthenticated, DetailUserController.handle)
+router.put('/user/alter/role', isAuthenticated, AlterRoleUserController.handle)
+router.put(
+  '/users/change-password',
+  isAuthenticated,
+  UpdateUserPasswordConroller.handle,
+)
 
 // ROTAS CATEGORIAS
 router.post('/category', isAuthenticated, CreateCategoryController.handle)
@@ -78,6 +87,7 @@ router.get('/orders', isAuthenticated, ListOrdersController.handle)
 router.get('/order/detail', isAuthenticated, DetailOrderController.handle)
 router.put('/order/finish', isAuthenticated, FinishOrderController.handle)
 router.put('/order/process', isAuthenticated, ProcessOrderController.handle)
+router.put('/order/cancel', isAuthenticated, CancelOrderController.handle)
 
 // TABLES
 router.get('/tables', isAuthenticated, GetTableController.handle)

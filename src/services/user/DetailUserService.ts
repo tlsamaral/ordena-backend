@@ -10,9 +10,17 @@ class DetailUserService {
         id: true,
         name: true,
         email: true,
+        alter_password: true,
+        admin: true,
       },
     })
-    return user
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      alter_password: user.alter_password,
+      admin: user.admin,
+    }
   }
 }
 

@@ -23,6 +23,7 @@ model User {
   permission Boolean   @default(false)
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
+  alter_password Boolean @default(false)
   orders     Order[]
 
   @@map("users")
