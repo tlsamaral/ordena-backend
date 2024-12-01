@@ -35,11 +35,11 @@ const router = Router()
 const upload = multer(uploadConfig.upload('./tmp'))
 // ROTAS USER
 router.post('/users', CreateUserController.handle)
-router.get('/users/all', GetUsersController.handle)
+router.get('/users/all', isAuthenticated, GetUsersController.handle)
 router.post('/session', AuthUserCnotroller.handle)
-router.put('/users/accept', AcceptUserController.handle)
-router.put('/users/reject', RejectUserController.handle)
-router.delete('/users/:id', DeleteUserController.handle)
+router.put('/users/accept', isAuthenticated, AcceptUserController.handle)
+router.put('/users/reject', isAuthenticated, RejectUserController.handle)
+router.delete('/users/:id', isAuthenticated, DeleteUserController.handle)
 router.get('/me', isAuthenticated, DetailUserController.handle)
 
 // ROTAS CATEGORIAS

@@ -32,6 +32,12 @@ class ListOrderService {
       },
     })
 
+    // Verifica se não há ordens
+    if (!orders || orders.length === 0) {
+      return [] // Retorna um array vazio ou uma mensagem, dependendo do que você espera
+    }
+
+    // Processa as ordens caso existam
     const productsWithBannerUrl = orders.map((order) => {
       return {
         ...order,

@@ -4,6 +4,6 @@ Content-Type: application/json
 Authorization: Bearer ACCESS-TOKEN
 
 {
-   "email":"rafael@exemple.com",
-   "password":"123456"
+   "email":"admin@snapfood.com",
+   "password":"snapfood123"
 }
