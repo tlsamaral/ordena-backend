@@ -1,0 +1,70 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.router = void 0;
+const express_1 = require("express");
+const multer_1 = __importDefault(require("multer"));
+const CreateCategoryController_1 = __importDefault(require("./controllers/category/CreateCategoryController"));
+const ListCategoryController_1 = __importDefault(require("./controllers/category/ListCategoryController"));
+const CreateProductController_1 = __importDefault(require("./controllers/product/CreateProductController"));
+const AuthUserController_1 = __importDefault(require("./controllers/user/AuthUserController"));
+const CreateUserController_1 = __importDefault(require("./controllers/user/CreateUserController"));
+const DetailUserController_1 = __importDefault(require("./controllers/user/DetailUserController"));
+const multer_2 = __importDefault(require("./config/multer"));
+const AddItemController_1 = __importDefault(require("./controllers/order/AddItemController"));
+const CreateOrderController_1 = __importDefault(require("./controllers/order/CreateOrderController"));
+const DetailOrderController_1 = __importDefault(require("./controllers/order/DetailOrderController"));
+const FinishOrderController_1 = __importDefault(require("./controllers/order/FinishOrderController"));
+const GetOrderByIdController_1 = __importDefault(require("./controllers/order/GetOrderByIdController"));
+const ListOrdersController_1 = __importDefault(require("./controllers/order/ListOrdersController"));
+const ProcessOrderController_1 = __importDefault(require("./controllers/order/ProcessOrderController"));
+const RemoveItemController_1 = __importDefault(require("./controllers/order/RemoveItemController"));
+const RemoveOrderController_1 = __importDefault(require("./controllers/order/RemoveOrderController"));
+const SendOrderController_1 = __importDefault(require("./controllers/order/SendOrderController"));
+const SendOrderFullController_1 = __importDefault(require("./controllers/order/SendOrderFullController"));
+const DeleteProductController_1 = __importDefault(require("./controllers/product/DeleteProductController"));
+const GetAllProductsController_1 = __importDefault(require("./controllers/product/GetAllProductsController"));
+const CreateTableController_1 = __importDefault(require("./controllers/table/CreateTableController"));
+const GetTableController_1 = __importDefault(require("./controllers/table/GetTableController"));
+const AcceptUserController_1 = __importDefault(require("./controllers/user/AcceptUserController"));
+const GetUsersController_1 = __importDefault(require("./controllers/user/GetUsersController"));
+const RejectUserController_1 = __importDefault(require("./controllers/user/RejectUserController"));
+const getUserFromToken_1 = require("./middlewares/getUserFromToken");
+const isAuthenticated_1 = require("./middlewares/isAuthenticated");
+const DeleteUserController_1 = __importDefault(require("./controllers/user/DeleteUserController"));
+const router = (0, express_1.Router)();
+exports.router = router;
+const upload = (0, multer_1.default)(multer_2.default.upload('./tmp'));
+// ROTAS USER
+router.post('/users', CreateUserController_1.default.handle);
+router.get('/users/all', GetUsersController_1.default.handle);
+router.post('/session', AuthUserController_1.default.handle);
+router.put('/users/accept', AcceptUserController_1.default.handle);
+router.put('/users/reject', RejectUserController_1.default.handle);
+router.delete('/users/:id', DeleteUserController_1.default.handle);
+router.get('/me', isAuthenticated_1.isAuthenticated, DetailUserController_1.default.handle);
+// ROTAS CATEGORIAS
+router.post('/category', isAuthenticated_1.isAuthenticated, CreateCategoryController_1.default.handle);
+router.get('/category', isAuthenticated_1.isAuthenticated, ListCategoryController_1.default.handle);
+// ROTAS PRODUCT
+router.post('/product', isAuthenticated_1.isAuthenticated, upload.single('file'), CreateProductController_1.default.handle);
+router.get('/product/all', isAuthenticated_1.isAuthenticated, GetAllProductsController_1.default.handle);
+router.delete('/product/:id', isAuthenticated_1.isAuthenticated, DeleteProductController_1.default.handle);
+router.get('/category/product', isAuthenticated_1.isAuthenticated, ListCategoryController_1.default.handle);
+// ROTAS ORDER
+router.post('/order', isAuthenticated_1.isAuthenticated, getUserFromToken_1.getUserIdFromToken, CreateOrderController_1.default.handle);
+router.delete('/order', isAuthenticated_1.isAuthenticated, RemoveOrderController_1.default.handle);
+router.get('/order/:id', isAuthenticated_1.isAuthenticated, GetOrderByIdController_1.default.handle);
+router.post('/order/add', isAuthenticated_1.isAuthenticated, AddItemController_1.default.handle);
+router.delete('/order/remove', isAuthenticated_1.isAuthenticated, RemoveItemController_1.default.handle);
+router.put('/order/send', isAuthenticated_1.isAuthenticated, SendOrderController_1.default.handle);
+router.put('/order/send-full', isAuthenticated_1.isAuthenticated, SendOrderFullController_1.default.handle);
+router.get('/orders', isAuthenticated_1.isAuthenticated, ListOrdersController_1.default.handle);
+router.get('/order/detail', isAuthenticated_1.isAuthenticated, DetailOrderController_1.default.handle);
+router.put('/order/finish', isAuthenticated_1.isAuthenticated, FinishOrderController_1.default.handle);
+router.put('/order/process', isAuthenticated_1.isAuthenticated, ProcessOrderController_1.default.handle);
+// TABLES
+router.get('/tables', isAuthenticated_1.isAuthenticated, GetTableController_1.default.handle);
+router.post('/tables', isAuthenticated_1.isAuthenticated, CreateTableController_1.default.handle);
