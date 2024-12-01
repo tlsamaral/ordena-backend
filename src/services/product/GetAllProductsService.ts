@@ -4,7 +4,9 @@ class GetAllProductsService {
   async execute() {
     const products = await prismaClient.product.findMany({
       where: {
-        deleted: false,
+        deleted: {
+          equals: false,
+        },
       },
       include: {
         category: {

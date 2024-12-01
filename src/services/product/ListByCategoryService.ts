@@ -8,7 +8,9 @@ class ListByCategoryService {
     const products = await prismaClient.product.findMany({
       where: {
         category_id,
-        deleted: false,
+        deleted: {
+          equals: false,
+        },
       },
     })
     return products
