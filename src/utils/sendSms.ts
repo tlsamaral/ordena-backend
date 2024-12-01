@@ -11,16 +11,16 @@ class SendSms {
     this.client = client
   }
   async execute(phone: string, message: string) {
-    // try {
-    //   await client.messages.create({
-    //     body: message,
-    //     from: phoneNumber,
-    //     to: `+55${phone}`,
-    //   })
-    // } catch (error) {
-    //   console.log(error)
-    //   throw new Error(error.message)
-    // }
+    try {
+      await client.messages.create({
+        body: message,
+        from: phoneNumber,
+        to: `+55${phone}`,
+      })
+    } catch (error) {
+      console.log(error)
+      throw new Error(error.message)
+    }
   }
 }
 
