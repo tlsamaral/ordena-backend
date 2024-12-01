@@ -11,7 +11,7 @@ class AddItemService {
       data: {
         order_id: order_id,
         product_id: product_id,
-        amout: amount,
+        amount: amount,
       },
       select: {
         id: true,

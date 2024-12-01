@@ -1,7 +1,7 @@
 import { hash } from 'bcryptjs'
 import prismaClient from '../../prisma'
 import { createNewUserMessage } from '../../utils/createNewUserMessage'
-import EmailService from '../email/SendEmail'
+
 interface UserRequest {
   name: string
   email: string
