@@ -9,6 +9,7 @@ import CreateUserController from './controllers/user/CreateUserController'
 import DetailUserController from './controllers/user/DetailUserController'
 
 import uploadConfig from './config/multer'
+import DeleteCategoryController from './controllers/category/DeleteCategoryController'
 import AddItemController from './controllers/order/AddItemController'
 import CreateOrderController from './controllers/order/CreateOrderController'
 import DetailOrderController from './controllers/order/DetailOrderController'
@@ -25,11 +26,11 @@ import GetAllProductsController from './controllers/product/GetAllProductsContro
 import CreateTableController from './controllers/table/CreateTableController'
 import GetTableController from './controllers/table/GetTableController'
 import AcceptUserController from './controllers/user/AcceptUserController'
+import DeleteUserController from './controllers/user/DeleteUserController'
 import GetUsersController from './controllers/user/GetUsersController'
 import RejectUserController from './controllers/user/RejectUserController'
 import { getUserIdFromToken } from './middlewares/getUserFromToken'
 import { isAuthenticated } from './middlewares/isAuthenticated'
-import DeleteUserController from './controllers/user/DeleteUserController'
 
 const router = Router()
 const upload = multer(uploadConfig.upload('./tmp'))
@@ -45,6 +46,7 @@ router.get('/me', isAuthenticated, DetailUserController.handle)
 // ROTAS CATEGORIAS
 router.post('/category', isAuthenticated, CreateCategoryController.handle)
 router.get('/category', isAuthenticated, ListCategoryController.handle)
+router.delete('/category/:id', isAuthenticated, DeleteCategoryController.handle)
 
 // ROTAS PRODUCT
 router.post(
