@@ -5,9 +5,12 @@ interface CategoryRequest {
 }
 class DeleteCategoryService {
   async execute({ category_id }: CategoryRequest) {
-    const category = prismaClient.category.delete({
+    const category = prismaClient.category.update({
       where: {
         id: category_id,
+      },
+      data: {
+        deleted: true,
       },
     })
     return category

@@ -17,9 +17,12 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class DeleteCategoryService {
     execute(_a) {
         return __awaiter(this, arguments, void 0, function* ({ category_id }) {
-            const category = prisma_1.default.category.delete({
+            const category = prisma_1.default.category.update({
                 where: {
                     id: category_id,
+                },
+                data: {
+                    deleted: true,
                 },
             });
             return category;

@@ -35,6 +35,7 @@ model Category {
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
   products   Product[]
+  deleted     Boolean   @default(false)
 
   @@map("categories")
 }
@@ -47,6 +48,7 @@ model Product {
   banner      String
   created_at  DateTime? @default(now())
   updated_at  DateTime? @default(now())
+  deleted     Boolean   @default(false)
   category    Category  @relation(fields: [category_id], references: [id])
   category_id String
   Item        Item[]

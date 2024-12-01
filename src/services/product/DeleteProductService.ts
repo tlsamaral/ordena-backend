@@ -1,19 +1,22 @@
-import prismaClient from "../../prisma";
+import prismaClient from '../../prisma'
 
 interface ProductRequest {
-	id: string;
+  id: string
 }
 
 class DeleteProductService {
-	async execute({ id }: ProductRequest) {
-		const product = await prismaClient.product.delete({
-			where: {
-				id,
-			},
-		});
+  async execute({ id }: ProductRequest) {
+    const product = await prismaClient.product.update({
+      where: {
+        id,
+      },
+      data: {
+        deleted: true,
+      },
+    })
 
-		return product;
-	}
+    return product
+  }
 }
 
-export { DeleteProductService };
+export { DeleteProductService }

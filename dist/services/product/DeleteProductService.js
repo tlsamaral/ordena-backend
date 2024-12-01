@@ -17,9 +17,12 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class DeleteProductService {
     execute(_a) {
         return __awaiter(this, arguments, void 0, function* ({ id }) {
-            const product = yield prisma_1.default.product.delete({
+            const product = yield prisma_1.default.product.update({
                 where: {
                     id,
+                },
+                data: {
+                    deleted: true,
                 },
             });
             return product;

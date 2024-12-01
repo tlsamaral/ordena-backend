@@ -7,6 +7,9 @@ class ListCategoryService {
         id: true,
         name: true,
       },
+      where: {
+        deleted: false,
+      },
     })
 
     return categories

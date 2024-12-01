@@ -20,6 +20,7 @@ class ListByCategoryService {
             const products = yield prisma_1.default.product.findMany({
                 where: {
                     category_id,
+                    deleted: false,
                 },
             });
             return products;

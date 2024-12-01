@@ -3,6 +3,9 @@ import prismaClient from '../../prisma'
 class GetAllProductsService {
   async execute() {
     const products = await prismaClient.product.findMany({
+      where: {
+        deleted: false,
+      },
       include: {
         category: {
           select: {
