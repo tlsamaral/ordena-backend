@@ -23,7 +23,9 @@ class ListCategoryService {
                     name: true,
                 },
                 where: {
-                    deleted: false,
+                    deleted: {
+                        equals: false,
+                    },
                 },
             });
             return categories;

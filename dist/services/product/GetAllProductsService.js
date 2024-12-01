@@ -19,7 +19,9 @@ class GetAllProductsService {
         return __awaiter(this, void 0, void 0, function* () {
             const products = yield prisma_1.default.product.findMany({
                 where: {
-                    deleted: false,
+                    deleted: {
+                        equals: false,
+                    },
                 },
                 include: {
                     category: {
