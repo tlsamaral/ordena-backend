@@ -17,7 +17,7 @@ const bcryptjs_1 = require("bcryptjs");
 const prisma_1 = __importDefault(require("../../prisma"));
 class CreateUserService {
     execute(_a) {
-        return __awaiter(this, arguments, void 0, function* ({ name, email, password, alter_password = false, permission = false, }) {
+        return __awaiter(this, arguments, void 0, function* ({ name, email, password, alter_password = false, permission = false, admin = false, }) {
             if (!email) {
                 throw new Error('Email incorrect');
             }
@@ -37,6 +37,7 @@ class CreateUserService {
                     password: passwordHash,
                     alter_password: alter_password,
                     permission,
+                    admin,
                 },
                 select: {
                     id: true,
@@ -44,6 +45,7 @@ class CreateUserService {
                     email: true,
                 },
             });
+            console.log(user);
             return user;
         });
     }

@@ -27,7 +27,7 @@ class AlterRoleUserService {
                     id: user_id,
                 },
                 data: {
-                    permission: !userFind.permission,
+                    admin: !userFind.admin,
                 },
             });
             return user;
