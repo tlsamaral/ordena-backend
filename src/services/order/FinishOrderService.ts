@@ -47,17 +47,10 @@ class FinishOrderService {
       },
     })
 
-    const socketId = this.io.userSockets.get(order.user_id)
-    if (socketId) {
-      console.log(
-        `Emitindo evento para user_id: ${order.user_id} com socketId: ${socketId}`,
-      )
-      this.io.to(socketId).emit('order:finish', order)
-    } else {
-      console.log(`Usuário ${order.user_id} não está conectado no momento.`)
-    }
+    this.io.emit('order:finish', order)
 
     this.io.emit('order:end', order)
+    console.log(order)
     if (order.phone) {
       try {
         const smsResponse = await this.sendSmsWithTwilio.execute(
