@@ -8,6 +8,7 @@ interface UserRequest {
   password: string
   alter_password?: boolean
   permission?: boolean
+  admin?: boolean
 }
 class CreateUserService {
   async execute({
@@ -16,6 +17,7 @@ class CreateUserService {
     password,
     alter_password = false,
     permission = false,
+    admin = false,
   }: UserRequest) {
     if (!email) {
       throw new Error('Email incorrect')
@@ -39,6 +41,7 @@ class CreateUserService {
         password: passwordHash,
         alter_password: alter_password,
         permission,
+        admin,
       },
       select: {
         id: true,
@@ -46,6 +49,8 @@ class CreateUserService {
         email: true,
       },
     })
+
+    console.log(user)
 
     return user
   }
