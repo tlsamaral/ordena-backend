@@ -10,6 +10,7 @@ class CreateProductController {
 			throw new Error("File is required");
 		}
 		const { filename: banner } = req.file;
+
 		const product = await createProductService.execute({
 			name,
 			price,
