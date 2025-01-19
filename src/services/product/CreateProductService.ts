@@ -1,3 +1,5 @@
+import path from "node:path";
+import { cloudinary } from "../../lib/cloudinary";
 import prismaClient from "../../prisma";
 
 interface ProductRequest {
@@ -16,25 +18,38 @@ class CreateProductService {
 		banner,
 		category_id,
 	}: ProductRequest) {
-		const product = await prismaClient.product.create({
-			data: {
-				name,
-				description,
-				price,
-				banner,
-				category_id,
-			},
-			include: {
-				category: true,
-			},
-		});
-		const baseURL = process.env.BASE_URL;
-		return {
-			...product,
-			category: product.category.name,
-			banner: `${baseURL}/files/${product.banner}`,
-		};
-	}
+		const filePath = path.resolve(__dirname, "..", "..", "..", "tmp", banner);
+
+		
+		try {
+			const uploadData = await cloudinary.uploader.upload(filePath, {
+				folder: 'snapfood-products',
+				use_filename: true,
+				unique_filename: false
+			})
+			
+			const product = await prismaClient.product.create({
+				data: {
+					name,
+					description,
+					price,
+					banner: uploadData.url,
+					category_id,
+				},
+				include: {
+					category: true,
+				},
+			})
+
+
+			return {
+				...product,
+				category: product.category.name,
+			}
+		} catch (error) {
+			throw new Error(error)
+		}
+	 }
 }
 
 export { CreateProductService };
