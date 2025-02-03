@@ -23,7 +23,6 @@ class GetAllProductsService {
     const productsWithBannerUrl = products.map((product) => {
       return {
         ...product,
-        banner: `${baseURL}/files/${product.banner}`,
         category: product.category.name,
       }
     })

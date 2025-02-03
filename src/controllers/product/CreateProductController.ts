@@ -19,6 +19,7 @@ class CreateProductController {
 			category_id,
 		});
 
+		console.log(product)
 		return res.json(product);
 	}
 }
