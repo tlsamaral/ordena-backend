@@ -46,7 +46,7 @@ class ListOrderService {
             ...item,
             product: {
               ...item.product,
-              banner: `${process.env.BASE_URL}/files/${item.product.banner}`,
+              banner: item.product.banner,
             },
           }
         }),

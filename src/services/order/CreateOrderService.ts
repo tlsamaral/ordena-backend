@@ -45,7 +45,7 @@ class CreateOrderService {
         product: {
           ...item.product,
           banner: item.product.banner
-            ? `${process.env.BASE_URL}/files/${item.product.banner}`
+            ? `${item.product.banner}`
             : null,
         },
       })),
